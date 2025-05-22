@@ -1,4 +1,4 @@
-# DEPENDECIES & SCENERIO
+# HARDWARE SPECS & CONFIGURATION
 
 # HARDWARE SPECIFICATIONS
 # Server Model: Dell R630
@@ -17,7 +17,7 @@
 # Note: Duplicate drive models are required for a RAID 1 configuration.
 
 # RAID IMPLEMENTATION
-# - Steps to create a RAID configuration are not provided.
+# - Configuration steps are not included in this guideline
 
 # RAID ADVANTAGES
 # - Redundancy: RAID 1 (Mirroring) duplicates data across both drives, enabling automatic failover if one drive fails.
