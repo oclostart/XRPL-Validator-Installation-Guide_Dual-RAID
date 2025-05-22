@@ -29,6 +29,11 @@
 # RAID CONFIGURATION
 # Note: Steps to create RAID configurations are not provided.
 
-# DISADVANTAGE 
+# RAID CONFIGURATION DISADVANTAGES
 # - Additional hardware costs
 # - Additional configuration
+
+LOAD/PERFORMANCE OPTIMIZATION DISADVANTAGES
+# - Additional hardware costs
+# - Additional configuration
+
