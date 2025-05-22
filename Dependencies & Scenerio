@@ -1,0 +1,34 @@
+# DEPENDECIES & SCENERIO
+
+# HARDWARE SPECIFICATIONS
+# Server Model: Dell R630
+# Processor (CPU): 2 x  Xeon E5-2667V4 8-Core 3.2 GHz
+# Memory (RAM): 64 GB (4 x 16GB) DDR4 2666 Mhz PC4 R Memory
+# Network Card (NIC): FM487 1350 4 x 1-GBPS RJ-45
+# Raid Controller: PERC H330 Mini Mono 12GB/s RAID Card
+# Drive 1: 500 GB Samsung SSD SATA 6GB/s 2.5"
+# Drive 2: 500 GB Samsung SSD SATA 6GB/s 2.5"
+# Drive 3: 1 TB Samsung SSD SATA 6GB/s 2.5"
+# Drive 4: 1 TB Samsung SSD SATA 6GB/s 2.5"
+
+# RAID CONFIGURATION
+# Note: A RAID 1 (Mirroring) configuration for Drive 1 and Drive 2 was configured to make the two physical drives seem like 1 logical drive
+# Note: A RAID 1 (Mirroring) configuration for Drive 3 and Drive 4 was configured to make the two physical drives seem like 1 logical drive
+
+# REDUNDANCY
+# Note: A RAID 1 configuration writes data to both drives in the RAID, creating an exact backup that automatically gets used by the system if the primary drive fails.
+# Note: Having a backup drive with the exact data that is automatically activated prevents server downtime allowing the system administrator to hot swap the bad drive while the system is running.
+# Note: Duplicate drive models are required for a RAID 1 configuration.
+
+# LOAD/PERFORMANCE OPTIMIZATION
+# Note: The first RAID configuration, LOGICAL DRIVE 1, consisting of the two 500 GB SSDs will be used to host the Operating System.
+# Note: The second RAID configuration, LOGICAL DRIVE 2, consisting of the two 1 TB SSDs will be used to host tbe rippled database and log file.
+# Note: Seperating tasks reduces the hard drive load, improving hardware life over time, and optimizing performance.
+# Note: A RAID configuration is not needed to apply this standard. If you don't require a RAID configuration, any two drives can be used for this setup.
+
+# RAID CONFIGURATION
+# Note: Steps to create RAID configurations are not provided.
+
+# DISADVANTAGE 
+# - Additional hardware costs
+# - Additional configuration
