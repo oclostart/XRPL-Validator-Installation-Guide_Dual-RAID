@@ -1,7 +1,7 @@
 # List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
 lsblk
 
-# Partition the sdb disk
+# Partition the sdb disk for the rippled db and log file
 sudo fdisk /dev/sdb
 
 # Select new partition
@@ -50,3 +50,34 @@ UUID= YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
 CTRL+O
 ENTER
 CTRL+X
+
+# Update and install repos
+sudo apt -y update
+sudo apt upgrade -y
+
+# Install utilities
+sudo apt -y install apt-transport-https ca-certificates wget gnupg
+
+# Add Ripple's package-signing GPG key to your list of trusted keys
+sudo install -m 0755 -d /etc/apt/keyrings && \
+    wget -qO- https://repos.ripple.com/repos/api/gpg/key/public | \
+    sudo gpg --dearmor -o /etc/apt/keyrings/ripple.gpg
+
+# Check the fingerprint of the newly-added key
+gpg --show-keys /etc/apt/keyrings/ripple.gpg
+
+# Confirm the result from the command above matches the info below
+# pub   rsa3072 2019-02-14 [SC] [expires: 2026-02-17]
+#     C0010EC205B35A3310DC90DE395F97FFCCAFD9A2
+# uid           TechOps Team at Ripple <techops+rippled@ripple.com>
+# sub   rsa3072 2019-02-14 [E] [expires: 2026-02-17]
+
+# Add the appropriate Ripple repository for your operating system version: Ubuntu 24.4.02
+echo "deb [signed-by=/etc/apt/keyrings/ripple.gpg] https://repos.ripple.com/repos/rippled-deb noble stable" | \
+    sudo tee -a /etc/apt/sources.list.d/ripple.list
+
+# Update the package index to include Ripple's repo and install rippled.
+sudo apt -y update && sudo apt -y install rippled
+
+# You can confir the status of the rippled service
+systemctl status rippled.service
