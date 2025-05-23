@@ -1,3 +1,8 @@
+# Log in
+ENTER
+username
+password
+
 # List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
 lsblk
 
