@@ -7,6 +7,7 @@ CTRL+O
 ENTER
 CTRL+X
 sudo sysctl -p /etc/sysctl.conf
+cat /proc/sys/vm/swappiness  # Verify: 0
 
 # List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
 lsblk
