@@ -12,48 +12,49 @@
 # Drive 4: 1 TB Samsung SSD SATA 6GB/s 2.5"
 
 # RAID CONFIGURATION
-# - Logical Drive 1: RAID 1 (Mirroring) with Drives 1 & 2 (500 GB SSDs)
-# - Logical Drive 2: RAID 1 (Mirroring) with Drives 3 & 4 (1 TB SSDs)
+# Logical Drive 1: RAID 1 (Mirroring) with Drives 1 & 2 (500 GB SSDs)
+# Logical Drive 2: RAID 1 (Mirroring) with Drives 3 & 4 (1 TB SSDs)
 # Note: RAID 1 requires identical drive models.
 
 # RAID IMPLEMENTATION
-# - RAID configuration steps are not included in this guideline.
+# RAID configuration steps are not included in this guideline.
+# RAID configuration should be completed prior to installing the OS
 
 # RAID ADVANTAGES
-# - Redundancy: RAID 1 duplicates data across both drives, enabling an automatic failover if one drive fails.
-# - Uptime: Supports hot-swapping (while actively running) of failed drives reducing downtime.
+# Redundancy: RAID 1 duplicates data across both drives, enabling an automatic failover if one drive fails.
+# Uptime: Supports hot-swapping (while actively running) of failed drives reducing downtime.
 
 # RAID DISADVANTAGES
-# - Cost: Requires additional drives.
-# - Time: Requires configuration setup.
+# Cost: Requires additional drives.
+# Time: Requires configuration setup.
 
 # DRIVE OPTIMIZATION
-# - Logical Drive 1: Hosts the Operating System.
-# - Logical Drive 2: Hosts the rippled database and log files.
-# - Note: Can be implemented without a RAID configuration using two physical drives.
+# Logical Drive 1: Hosts the Operating System.
+# Logical Drive 2: Hosts the rippled database and log files.
+# Note: Can be implemented without a RAID configuration using two physical drives.
 
 # DRIVE OPTIMIZATION ADVANTAGES
-# - Reduces I/O contention.
-# - Extends hardware lifespan.
-# - Improves performance.
+#  Reduces I/O contention.
+#  Extends hardware lifespan.
+# -mproves performance.
 
 # DRIVE OPTIMIZATION DISADVANTAGES
-# - Cost: Requires additional drives.
-# - Time: Requires configuration setup.
+# Cost: Requires additional drives.
+# Time: Requires configuration setup.
 
 # ADDITIONAL HARDWARE
-# - Power Cable x 2
-# - Cat 6 Network Cable
-# - Monitor (Power & VGA cable)
-# - USB Flash Drive (For OS installation)
-# - USB Hub (In our case the VGA cable blocked the USB flash drive from inserting)
-# - Keyboard
-# - Mouse
+# Power Cable x 2
+# Cat 6 Network Cable
+# Monitor (Power & VGA cable)
+# USB Flash Drive (For OS installation)
+# USB Hub (In our case the VGA cable blocked the USB flash drive from inserting)
+# Keyboard
+# Mouse
 
 # OPTIONAL INRASTRUCTURE
-# - Server Rack
-# - Server Rack Rails
-# - PDU
-# - UPS
-# - AC Cooling System
-# - 1 Gbps Internet Speed
+# Server Rack
+# Server Rack Rails
+# PDU
+# UPS
+# AC Cooling System
+# 1 Gbps Internet Speed
