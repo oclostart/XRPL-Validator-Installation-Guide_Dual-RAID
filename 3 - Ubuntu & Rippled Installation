@@ -48,7 +48,7 @@ sudo nano /etc/fstab
 # Enter the following text including the comment "# rippled_data mount configuration"
 
 # rippled_data mount configuration
-UUID= YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
+UUID=YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
 
 # Save and exit
 CTRL+O
