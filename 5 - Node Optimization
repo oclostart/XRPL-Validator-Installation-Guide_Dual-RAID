@@ -1,1 +1,108 @@
+# Disable swappiness
+cat /proc/sys/vm/swappiness
+sudo nano /etc/sysctl.conf
+vm.swappiness=0
+# Save & Exit
+CTRL+O
+ENTER
+CTRL+X
+sudo sysctl -p /etc/sysctl.conf
+
+# List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
+lsblk
+
+# Partition the sdb disk for the rippled db and log file
+sudo fdisk /dev/sdb
+
+# Select new partition
+n
+ENTER
+
+# Select Primary (default)
+ENTER
+
+# Select Partition Number 1 (default)
+ENTER
+
+# Select First Sector (default 2048)
+ENTER
+
+# Select Last Sector (default = use full disk)
+ENTER
+
+# Save changes and exit
+w
+
+# Create an ext4 filesystem on sdb and set /dev/sdb1 as its partition
+sudo mkfs.ext4 /dev/sdb1
+
+# Create a mount point for sdb
+sudo mkdir /mnt/rippled_data
+
+# Correlate the partition to the mount point
+sudo mount /dev/sdb1 /mnt/rippled_data
+
+# Copy or take a picture of the sdb1 UUID
+sudo blkid
+
+# Edit fstab to automatically mount sdb at bootup with noatime
+sudo nano /etc/fstab
+
+# Enter the following text including the comment "# rippled_data mount configuration"
+
+# rippled_data mount configuration
+UUID=YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
+
+# Save and exit
+CTRL+O
+ENTER
+CTRL+X
+
+# Reclaim the 5% ext4 disk space reserve on sdb1
+sudo tune2fs -m 0 /dev/sdb1
+
+sudo systemctl stop rippled
+
+# Create new database & log directories
+sudo mkdir -p /mnt/rippled_data/rippled/db/nudb
+sudo mkdir -p /mnt/rippled_data/rippled/logs
+
+# Set ownership & permission
+sudo chown -R rippled:rippled /mnt/rippled_data/rippled/db
+sudo chmod -R 750 /mnt/rippled_data/rippled/db
+sudo chown rippled:rippled /mnt/rippled_data/rippled/logs
+sudo chmod 750 /mnt/rippled_data/rippled/logs
+
+# Update rippled.cfg
+sudo nano /etc/opt/ripple/rippled.cfg
+
+# Update the following under [node_db]
+path=/mnt/rippled_data/rippled/db/nudb
+online_delete=750000
+
+# Update the following under [database_path]
+/mnt/rippled_data/rippled/db
+
+# Update the following under [node_size]
+huge
+
+# Update the following under [debug_logfile]
+/mnt/rippled_data/rippled/logs/debug.log
+
+# Save and exit
+CTRL+O
+ENTER
+CTRL+X
+
+# Delete old database and log directories
+sudo rm -rf /var/lib/rippled/db
+sudo rm -rf /var/log/rippled
+
+# Start and enable rippled
+sudo systemctl start rippled
+sudo systemctl enable rippled
+
+# Verify rippled service
+rippled server_info
+systemctl status rippled.service
 
