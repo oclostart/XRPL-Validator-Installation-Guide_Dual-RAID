@@ -14,28 +14,30 @@
 # RAID CONFIGURATION
 # - Logical Drive 1: RAID 1 (Mirroring) with Drives 1 & 2 (500 GB SSDs)
 # - Logical Drive 2: RAID 1 (Mirroring) with Drives 3 & 4 (1 TB SSDs)
-# Note: Duplicate drive models are required for a RAID 1 configuration.
+# Note: RAID 1 requires identical drive models.
 
 # RAID IMPLEMENTATION
-# - Configuration steps are not included in this guideline
+# - Configuration steps are not included in this guideline.
 
 # RAID ADVANTAGES
-# - Redundancy: RAID 1 (Mirroring) duplicates data across both drives, enabling automatic failover if one drive fails.
+# - Redundancy: RAID 1 duplicates data across both drives, enabling an automatic failover if one drive fails.
 # - Uptime: Supports hot-swapping (while actively running) of failed drives reducing downtime.
 
 # RAID DISADVANTAGES
-# - Cost: More drives are needed
-# - Time: Additnal configuration time is required
+# - Cost: Requires additional drives.
+# - Time: Requires configuration setup.
 
-# DRIVE OPTIMIZATION (Can be applied without a RAID configuration using two physical drives)
-# - Logical Drive 1: To host the Operating System.
-# - Logical Drive 2: To host the rippled database and log files.
+# DRIVE OPTIMIZATION
+# - Logical Drive 1: Hosts the Operating System.
+# - Logical Drive 2: Hosts the rippled database and log files.
+# - Note: Can be implemented without a RAID configuration using two physical drives.
 
 # DRIVE OPTIMIZATION ADVANTAGES
-# - Reduces I/O contention
-# - Extends hardware lifespan
-# - Improves performance
+# - Reduces I/O contention.
+# - Extends hardware lifespan.
+# - Improves performance.
 
 # DRIVE OPTIMIZATION DISADVANTAGES
-# - Cost: More drives are needed
-# - Time: Additnal configuration time is required
+# - Cost: Requires additional drives.
+# - Time: Requires configuration setup.
+
