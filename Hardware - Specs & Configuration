@@ -1,4 +1,4 @@
-# HARDWARE SPECS & CONFIGURATION
+# HARDWARE - SPECS & CONFIGURATION
 
 # HARDWARE SPECIFICATIONS
 # Server Model: Dell R630
@@ -17,7 +17,7 @@
 # Note: RAID 1 requires identical drive models.
 
 # RAID IMPLEMENTATION
-# - Configuration steps are not included in this guideline.
+# - RAID configuration steps are not included in this guideline.
 
 # RAID ADVANTAGES
 # - Redundancy: RAID 1 duplicates data across both drives, enabling an automatic failover if one drive fails.
