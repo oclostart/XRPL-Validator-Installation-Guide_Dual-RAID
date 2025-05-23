@@ -36,6 +36,12 @@ sudo apt -y update && sudo apt -y install rippled
 # Check the status of the rippled service
 systemctl status rippled.service
 
+# Stop rippled
+sudo systemctl stop rippled
+
+# Install rippled-dbgsym for core dumps
+sudo apt install -y rippled-dbgsym
+
 # Configure core dumps
 ulimit -c unlimited
 sudo systemctl edit rippled
@@ -44,4 +50,16 @@ sudo systemctl edit rippled
 LimitCORE=infinity
 
 rippled server_info
+# Save & Exit
+CTRL+0
+ENTER
+CTROL+X
+
+sudo systemctl daemon-reload
+sudo systemctl restart rippled
+
+# Verify core dump configuration
+sudo systemctl show rippled | grep LimitCORE  # Expect: LimitCORE=infinity
+
 systemctl status rippled.service
+rippled server_info  # Check server_state: “syncing” or “connected”
