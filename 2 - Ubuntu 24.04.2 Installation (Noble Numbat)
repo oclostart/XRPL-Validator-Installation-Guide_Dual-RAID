@@ -1,1 +1,61 @@
 # Ubuntu 24.04.2 Installation Guide
+# Note: Recommended to have the network cable connected from the server to the uplink device, most likey a router, with an active DHCP network prior to booting up.
+
+# POWER ON THE SERVER AND DURING BOOTUP, WHEN IT PROMPTS, SELECT 
+F11 
+
+#
+
+# SELECT LANGUAGE
+English
+
+# SELECT KEYBOARD LAYOUT
+ENTER
+
+# CHOOSE BASE FOR INSTALLATION
+Ubuntu Server
+
+# CONFIGURE AT LEAST ONE INTERFACE THIS SERVER CAN USE TO TALK TO OTHER MACHINES....
+# An IP should auto populate the connected port with a DHCP address.
+ENTER 
+
+
+# IF THIS SYSTEM REQUIRES A PROXY TO CONNECT TO THE INTERNET...
+ENTER
+
+# IF YOU USE AN ALTERNATIVE MIRROR FOR UBUNTU....
+ENTER
+
+# CONFIGURE A GUIDED STORAGE LAYOUT, OR CREATE A CUSTOM ONE:
+Use An Entire Disk
+# SELECT LOGICAL DRIVE 1 (~500 GB Drive)
+ENTER
+ENTER
+
+# YOUR NAME
+Full Name
+
+# YOUR SERVERS NAME
+ServerName
+
+# PICK A USERNAME
+username
+
+# CHOOSE A PASSWORD
+password
+
+# CONFIRM YOUR PASSWORD
+password
+
+# UPGRADE THIS MACHINE TO UBUNTU PRO (DEFAULT: SKIP FOR NOW)
+ENTER
+
+# INSTALL OPENSSH (CHECK MARK THIS BOX)
+ENTER
+DONE
+
+# ADDITIONALA REPOS (DONT SELECT ANY)
+DONE
+
+# ONCE INSTALL IS COMPLETE
+Reboot Now
