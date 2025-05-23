@@ -79,5 +79,5 @@ echo "deb [signed-by=/etc/apt/keyrings/ripple.gpg] https://repos.ripple.com/repo
 # Update the package index to include Ripple's repo and install rippled.
 sudo apt -y update && sudo apt -y install rippled
 
-# You can confir the status of the rippled service
+# You can confirm the status of the rippled service
 systemctl status rippled.service
