@@ -1,0 +1,52 @@
+# List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
+lsblk
+
+# Partition the sdb disk
+sudo fdisk /dev/sdb
+
+# Select new partition
+n
+ENTER
+
+# Select Primary (default)
+ENTER
+
+# Select Partition Number 1 (default)
+ENTER
+
+# Select First Sector (default 2048)
+ENTER
+
+# Select Last Sector (default = use full disk)
+ENTER
+
+# Save changes and exit
+w
+
+# Create an ext4 filesystem on sdb and set /dev/sdb1 as its partition
+sudo mkfs.ext4 /dev/sdb1
+
+# Create a mount point for sdb
+sudo mkdir /mnt/rippled_data
+
+# Correlate the partition to the mount point
+sudo mount /dev/sdb1 /mnt/rippled_data
+
+# Reclaim the 5% ext4 disk space reserve on sdb1
+sudo tune2fs -m 0 /dev/sdb1
+
+# Copy or take a picture of the sdb1 UUID
+sudo blkid
+
+# Edit fstab to automatically mount sdb at bootup with noatime
+sudo nano /etc/fstab
+
+# Enter the following text including the comment "# rippled_data mount configuration"
+
+# rippled_data mount configuration
+UUID= YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
+
+# Save and exit
+CTRL+O
+ENTER
+CTRL+X
