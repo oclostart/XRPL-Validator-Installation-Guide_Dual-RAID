@@ -1,8 +1,37 @@
-# SSH Set up
+# WINDOWS CLIENT (COMPUTER REMOTING INTO THE VALIDATOR)
+# Click START
+# Search Windows PowerShell
+# Rick click and Run as Administrator
+ssh-keygen -t rsa -b 4096  # Press Enter for defaults
+type $env:USERPROFILE\.ssh\id_rsa.pub  # Copy output to clipboard
+ssh YourUsernameu@x.x.x.x  # Enter your username and validator IP. Enter your password once requested.
+
+# SSH CONNECTION 
+mkdir -p ~/.ssh
+echo "<paste-public-key-here>" >> ~/.ssh/authorized_keys  # Paste key, e.g., ssh-rsa AAAAB3NzaC1yc2...
+chmod 600 ~/.ssh/authorized_keys
+chmod 700 ~/.ssh
+exit
+ssh YourUsername@x.x.x.x # Test key-based login (no password needed)
+
 sudo apt update
 sudo apt install -y ufw
-sudo ufw allow 51235/tcp
-# If not traveling and connecting from local network pcs
+sudo ufw allow 51235/tcp  # rippled peer port
+sudo ufw allow 22/tcp     # SSH from any IP
+# If not traveling and connecting from local network computers
 sudo ufw allow from x.x.x.x to any port 22
-# If traveling and connecting from different IPs
-sudo ufw allow 22/tcp 
+sudo ufw enable
+sudo nano /etc/ssh/sshd_config
+# Add/edit:
+Port 22
+PermitRootLogin no
+PasswordAuthentication no
+AllowUsers YourUsername
+
+# Save & Exit
+CTRL+O
+ENTER
+CTRL+X
+
+sudo systemctl restart sshd
+sudo chmod 600 /etc/opt/ripple/validator-keys.json
