@@ -34,17 +34,17 @@
 # Note: Can be implemented without a RAID configuration using two physical drives.
 
 # DRIVE OPTIMIZATION ADVANTAGES
-#  Reduces I/O contention.
-#  Extends hardware lifespan.
-# -mproves performance.
+# Reduces I/O contention.
+# Extends hardware lifespan.
+# Improves performance.
 
 # DRIVE OPTIMIZATION DISADVANTAGES
 # Cost: Requires additional drives.
 # Time: Requires configuration setup.
 
 # ADDITIONAL HARDWARE
-# Power Cable x 2
-# Cat 6 Network Cable
+# Server Power Cable x 2
+# Cat 6 Network Cable (Server Uplink)
 # Monitor (Power & VGA cable)
 # USB Flash Drive (For OS installation)
 # USB Hub (In our case the VGA cable blocked the USB flash drive from inserting)
