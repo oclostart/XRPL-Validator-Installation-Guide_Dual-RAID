@@ -39,6 +39,12 @@ sudo mount /dev/sdb1 /mnt/rippled_data
 # Reclaim the 5% ext4 disk space reserve on sdb1
 sudo tune2fs -m 0 /dev/sdb1
 
+# Disable swappiness
+cat /proc/sys/vm/swappiness
+sudo nano /etc/sysctl.conf
+vm.swappiness=0
+sudo sysctl -p /etc/sysctl.conf
+
 # Copy or take a picture of the sdb1 UUID
 sudo blkid
 
@@ -89,6 +95,26 @@ systemctl status rippled.service
 # Stop rippled service
 sudo systemctl stop rippled
 
+# Set up rippled core dumpbs
+sudo apt update
+sudo apt install -y rippled-dbgsym
+ulimit -c unlimited
+sudo systemctl edit rippled
+
+[Service]
+LimitCORE=infinity
+
+# Save and exit
+CTRL+O
+ENTER
+CTRL+X
+
+# Reload system config
+sudo systemctl daemon-reload
+sudo systemctl start rippled
+systemctl status rippled.service
+sudo systemctl stop rippled
+
 # Create new database & log directories
 sudo mkdir -p /mnt/rippled_data/rippled/db/nudb
 sudo mkdir -p /mnt/rippled_data/rippled/logs
@@ -131,29 +157,6 @@ systemctl status rippled.service
 # Delete old database and log directories
 sudo rm -rf /var/lib/rippled/db
 sudo rm -rf /var/log/rippled
-
-# Disable swappiness
-cat /proc/sys/vm/swappiness
-sudo nano /etc/sysctl.conf
-vm.swappiness=0
-sudo sysctl -p /etc/sysctl.conf
-
-# Set up rippled core dumpbs
-sudo apt update
-sudo apt install -y rippled-dbgsym
-ulimit -c unlimited
-sudo systemctl edit rippled
-
-[Service]
-LimitCORE=infinity
-
-# Save and exit
-CTRL+O
-ENTER
-CTRL+X
-
-# Reload system config
-sudo systemctl daemon-reload
 
 # Restart rippled
 sudo systemctl restart rippled
