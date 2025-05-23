@@ -34,4 +34,3 @@ ENTER
 CTRL+X
 
 sudo systemctl restart sshd
-sudo chmod 600 /etc/opt/ripple/validator-keys.json
