@@ -37,6 +37,7 @@ sudo ufw allow 22/tcp     # SSH from any IP
 # If not traveling and connecting from local network computers
 # sudo ufw allow from x.x.x.x to any port 22
 sudo ufw enable
+y
 sudo ufw status           # Verify rules
 sudo nano /etc/ssh/sshd_config
 
