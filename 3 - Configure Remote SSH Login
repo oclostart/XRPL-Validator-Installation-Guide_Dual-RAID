@@ -52,5 +52,5 @@ AllowUsers username
 CTRL+O
 ENTER
 CTRL+X
-sudo systemctl restart sshd
+sudo systemctl restart ssh
 
