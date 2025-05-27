@@ -5,7 +5,7 @@ Click START
 Search "Windows PowerShell"
 Rick click and Run as Administrator
 
-# Generate
+# ENTER THE FOLLOWING
 ssh-keygen -t rsa -b 4096  # Press Enter for defaults
 type $env:USERPROFILE\.ssh\id_rsa.pub  # Copy output to clipboard
 
