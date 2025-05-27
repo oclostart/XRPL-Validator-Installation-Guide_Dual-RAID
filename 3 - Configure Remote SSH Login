@@ -1,7 +1,8 @@
-# FOR WINDOWS CONFIGURATION
+# THIS STEP IS OPTIONAL IF YOU WOULD LIKE TO SSH INTO YOUR XROK NODE
+# THESE STEPS ARE FOR A WINDOWS CONFIGURATION CLIENT (PC REMOTING INTO THE XRPL NODE)
 # Note: Complete these tasks on the Windows client PC that will remote into the server
 Click START
-Search Windows PowerShell
+Search "Windows PowerShell"
 Rick click and Run as Administrator
 
 # Generate
