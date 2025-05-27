@@ -27,7 +27,7 @@ exit
 
 # Reconnect the Windows client to the Server to test key-based login (no password needed)
 ssh username@x.x.x.x  
-password
+passphrase
 
 # On the Server (via New Key-Based SSH Session)
 sudo apt update
