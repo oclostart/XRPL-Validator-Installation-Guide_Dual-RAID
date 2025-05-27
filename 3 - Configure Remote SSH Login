@@ -41,7 +41,7 @@ y
 sudo ufw status           # Verify rules
 sudo nano /etc/ssh/sshd_config
 
-# Add/edit:
+# Add/edit byt removing the "#"
 Port 22
 
 PermitRootLogin no
