@@ -6,9 +6,12 @@ Search "Windows PowerShell"
 Rick click and Run as Administrator
 
 # ENTER THE FOLLOWING
-ssh-keygen -t rsa -b 4096  # Press Enter for defaults
+ssh-keygen -t rsa -b 4096
 ENTER (do not name the file)
-type $env:USERPROFILE\.ssh\id_rsa.pub  # Copy output to clipboard
+- enter a passphrase for your key pair (Recommended if the node is meant to be in production and not used for testing)
+- confirm your passphrase
+type $env:USERPROFILE\.ssh\id_rsa.pub  
+# Copy output to clipboard
 
 #  Connect to the Server from the Client (Password-Based) where x.x.x.x is the Server IP
 ssh username@x.x.x.x
