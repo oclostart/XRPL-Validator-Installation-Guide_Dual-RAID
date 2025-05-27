@@ -43,10 +43,11 @@ sudo nano /etc/ssh/sshd_config
 
 # Add/edit byt removing the "#"
 Port 22
-
+MaxSessions 2
 PermitRootLogin no
 PasswordAuthentication no
 AllowUsers username
+
 # Save & Exit
 CTRL+O
 ENTER
