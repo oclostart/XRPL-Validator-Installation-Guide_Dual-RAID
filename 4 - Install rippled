@@ -51,7 +51,7 @@ LimitCORE=infinity
 
 rippled server_info
 # Save & Exit
-CTRL+0
+CTRL+O
 ENTER
 CTROL+X
 
