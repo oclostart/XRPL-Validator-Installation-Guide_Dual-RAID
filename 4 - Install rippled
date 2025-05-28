@@ -56,7 +56,6 @@ CTROL+X
 
 sudo systemctl daemon-reload
 sudo systemctl restart rippled
-rippled server_info
 
 # Verify core dump configuration
 sudo systemctl show rippled | grep LimitCORE  # Expect: LimitCORE=infinity
