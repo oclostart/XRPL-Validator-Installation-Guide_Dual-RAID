@@ -1,4 +1,19 @@
-# Resize Drive 1
+# Your drives may have been configured differently, this is the drive structure after running lsblk
+# sda is hosting the OS, while sdb will host the DB and log file.
+# If you sdc it could be your usb drive
+
+# NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+# sda                         8:0    0 465.3G  0 disk
+# ├─sda1                      8:1    0     1M  0 part
+# ├─sda2                      8:2    0     2G  0 part /boot
+# └─sda3                      8:3    0 463.2G  0 part
+#   └─ubuntu--vg-ubuntu--lv 252:0    0   100G  0 lvm  /
+# sdb                         8:16   0   931G  0 disk
+# └─sdb1                      8:17   0   931G  0 part
+# sdc                         8:32   0 119.2G  0 disk
+# └─sdc1                      8:33   0 119.2G  0 part
+
+# Resize sda drive
 lsblk
 sudo vgs
 sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
@@ -19,28 +34,6 @@ cat /proc/sys/vm/swappiness  # Verify: 0
 # List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
 lsblk
 
-# Partition the sdb disk for the rippled db and log file
-sudo fdisk /dev/sdb
-
-# Select new partition
-n
-ENTER
-
-# Select Primary (default)
-ENTER
-
-# Select Partition Number 1 (default)
-ENTER
-
-# Select First Sector (default 2048)
-ENTER
-
-# Select Last Sector (default = use full disk)
-ENTER
-
-# Save changes and exit
-w
-
 # Create an ext4 filesystem on sdb and set /dev/sdb1 as its partition
 sudo mkfs.ext4 /dev/sdb1
 
@@ -51,7 +44,7 @@ sudo mkdir /mnt/rippled_data
 sudo mount /dev/sdb1 /mnt/rippled_data
 
 # Copy or take a picture of the sdb1 UUID
-sudo blkid
+sudo blkid /dev/sdb1
 
 # Edit fstab to automatically mount sdb at bootup with noatime
 sudo nano /etc/fstab
