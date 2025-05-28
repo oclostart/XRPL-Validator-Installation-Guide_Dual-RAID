@@ -64,18 +64,19 @@ sudo tune2fs -m 0 /dev/sdb1
 
 sudo systemctl stop rippled
 
-# Create new database & log directories
+# Create new directories
 sudo mkdir -p /mnt/rippled_data/rippled/db/nudb
 sudo mkdir -p /mnt/rippled_data/rippled/logs
 
-# Set ownership & permission
-sudo chown -R rippled:rippled /mnt/rippled_data/rippled/db
-sudo chmod -R 750 /mnt/rippled_data/rippled/db
-sudo chown rippled:rippled /mnt/rippled_data/rippled/logs
-sudo chmod 750 /mnt/rippled_data/rippled/logs
+#  Set correct ownership and permissions
+sudo chown -R rippled:rippled /mnt/rippled_data/rippled
+sudo chmod -R 750 /mnt/rippled_data/rippled
 
 # Update rippled.cfg
 sudo nano /etc/opt/ripple/rippled.cfg
+
+# Update the following under [node_size]
+huge
 
 # Update the following under [node_db]
 path=/mnt/rippled_data/rippled/db/nudb
@@ -83,9 +84,6 @@ online_delete=750000
 
 # Update the following under [database_path]
 /mnt/rippled_data/rippled/db
-
-# Update the following under [node_size]
-huge
 
 # Update the following under [debug_logfile]
 /mnt/rippled_data/rippled/logs/debug.log
