@@ -32,6 +32,7 @@ passphrase
 # On the Server (via New Key-Based SSH Session)
 sudo apt update
 sudo apt install -y ufw
+sudo apt upgrade -y
 sudo ufw allow 51235/tcp  # rippled peer port
 sudo ufw allow 22/tcp     # SSH from any IP
 # If not traveling and connecting from local network computers
@@ -43,7 +44,6 @@ sudo nano /etc/ssh/sshd_config
 
 # Add/edit byt removing the "#"
 Port 22
-MaxSessions 2
 PermitRootLogin no
 PasswordAuthentication no
 AllowUsers username
