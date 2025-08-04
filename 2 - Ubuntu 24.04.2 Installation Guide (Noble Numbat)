@@ -2,39 +2,51 @@
 # Note: Recommended to have the network cable connected from the server to the uplink device, most likey a router, with an active DHCP network prior to booting up.
 
 # POWER ON THE SERVER AND DURING BOOTUP, WHEN IT PROMPTS, SELECT 
-F11 
-One-Shot BIOS Boot Menu
-USB Flash Drive with OS
-Try or Install Ubuntu Server
+Press F11 
+Select One-Shot BIOS Boot Menu
+Select USB Flash Drive with Boothable OS installation
+Select Try or Install Ubuntu Server
 
 # SELECT LANGUAGE
-English
+Select English
+
+# If Installer Update Available
+Select Continue Without Updating
 
 # SELECT KEYBOARD LAYOUT
-ENTER
+Press ENTER
 
-# CHOOSE BASE FOR INSTALLATION
-Ubuntu Server
+# CHOOSE THE BASE FOR INSTALLATION
+Select Ubuntu Server
+Select Done
 
 # CONFIGURE AT LEAST ONE INTERFACE THIS SERVER CAN USE TO TALK TO OTHER MACHINES....
-# An IP should auto populate the connected port with a DHCP address.
-ENTER 
+# An IP should auto populate the connected port with a DHCP address. 
+Press ENTER 
 
 # IF THIS SYSTEM REQUIRES A PROXY TO CONNECT TO THE INTERNET...
-ENTER
+Press ENTER
 
-# IF YOU USE AN ALTERNATIVE MIRROR FOR UBUNTU....
-ENTER
+# IF YOU USE AN ALTERNATIVE MIRROR FOR UBUNTU.
+(Wait for the test to complete)
+Select Done
 
 # CONFIGURE A GUIDED STORAGE LAYOUT, OR CREATE A CUSTOM ONE:
-Use An Entire Disk
-Uncheck - LVM drive setting
+Select Use An Entire Disk
+Deselect Set up this disk as an LVM group
+Select Done
+
+# File System Summary
+Select Done
+
+# Destruction Option
+Select Continue
 
 # YOUR NAME
 Full Name
 
 # YOUR SERVERS NAME
-ServerName
+Server Name
 
 # PICK A USERNAME
 username
@@ -46,14 +58,14 @@ password
 password
 
 # UPGRADE THIS MACHINE TO UBUNTU PRO (DEFAULT: SKIP FOR NOW)
-ENTER
+Press ENTER
 
 # INSTALL OPENSSH (CHECK MARK THIS BOX)
-ENTER
-DONE
+Select Install OpenSSH server
+Select DONE
 
-# ADDITIONALA REPOS (DONT SELECT ANY)
-DONE
+# Featured Server Snaps
+Select DONE
 
 # ONCE INSTALL IS COMPLETE
 Reboot Now
