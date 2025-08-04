@@ -6,14 +6,11 @@
 # Memory (RAM): 64 GB (4 x 16GB) DDR4 2666 Mhz PC4 R Memory
 # Network Card (NIC): FM487 1350 4 x 1-GBPS RJ-45
 # Raid Controller: PERC H330 Mini Mono 12GB/s RAID Card
-# Drive 1: 500 GB Samsung SSD SATA 6GB/s 2.5"
-# Drive 2: 500 GB Samsung SSD SATA 6GB/s 2.5"
-# Drive 3: 1 TB Samsung SSD SATA 6GB/s 2.5"
-# Drive 4: 1 TB Samsung SSD SATA 6GB/s 2.5"
+# Drive 1: 1 TB Samsung SSD SATA 6GB/s 2.5"
+# Drive 2: 1 TB Samsung SSD SATA 6GB/s 2.5"
 
 # RAID CONFIGURATION
-# Logical Drive 1: RAID 1 (Mirroring) with Drives 1 & 2 (500 GB SSDs)
-# Logical Drive 2: RAID 1 (Mirroring) with Drives 3 & 4 (1 TB SSDs)
+# Logical Drive 1: RAID 1 (Mirroring) with Drives 1 & 2 (1 TB SSDs)
 # Note: RAID 1 requires identical drive models.
 
 # RAID IMPLEMENTATION
@@ -25,20 +22,6 @@
 # Uptime: Supports hot-swapping (while actively running) of failed drives reducing downtime.
 
 # RAID DISADVANTAGES
-# Cost: Requires additional drives.
-# Time: Requires configuration setup.
-
-# DRIVE OPTIMIZATION
-# Logical Drive 1: Hosts the Operating System.
-# Logical Drive 2: Hosts the rippled database and log files.
-# Note: Can be implemented without a RAID configuration using two physical drives.
-
-# DRIVE OPTIMIZATION ADVANTAGES
-# Reduces I/O contention.
-# Extends hardware lifespan.
-# Improves performance.
-
-# DRIVE OPTIMIZATION DISADVANTAGES
 # Cost: Requires additional drives.
 # Time: Requires configuration setup.
 
