@@ -20,7 +20,6 @@ Ubuntu Server
 # An IP should auto populate the connected port with a DHCP address.
 ENTER 
 
-
 # IF THIS SYSTEM REQUIRES A PROXY TO CONNECT TO THE INTERNET...
 ENTER
 
@@ -29,9 +28,7 @@ ENTER
 
 # CONFIGURE A GUIDED STORAGE LAYOUT, OR CREATE A CUSTOM ONE:
 Use An Entire Disk
-# SELECT LOGICAL DRIVE 1 (~500 GB Drive)
-ENTER
-ENTER
+Uncheck - LVM drive setting
 
 # YOUR NAME
 Full Name
