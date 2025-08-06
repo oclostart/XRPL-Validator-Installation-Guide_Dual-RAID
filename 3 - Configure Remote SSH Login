@@ -15,8 +15,8 @@ type $env:USERPROFILE\.ssh\id_rsa.pub
 
 #  Connect to the Server from the Client (Password-Based) where x.x.x.x is the Server IP
 ssh username@x.x.x.x
-yes
-password
+Type yes
+Type your server account password
 
 # On the Server (via SSH Session) 
 mkdir -p ~/.ssh
