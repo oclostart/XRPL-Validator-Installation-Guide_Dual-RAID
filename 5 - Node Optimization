@@ -1,6 +1,4 @@
-# Your drives may have been configured differently, this is the drive structure after running lsblk
-# sda is hosting the OS, while sdb will host the DB and log file.
-# If you sdc it could be your usb drive
+# Your drives may have been configured differently, this is the drive structure after running lsblk   
 
 # NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
 # sda                         8:0    0 465.3G  0 disk
