@@ -18,12 +18,6 @@ huge
 # Update the following under [node_db]
 online_delete=750000
 
-# Update the following under [database_path]
-/mnt/rippled_data/rippled/db
-
-# Update the following under [debug_logfile]
-/mnt/rippled_data/rippled/logs/debug.log
-
 # Save and exit
 CTRL+O
 ENTER
