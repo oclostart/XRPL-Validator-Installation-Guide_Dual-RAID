@@ -1,23 +1,3 @@
-# Your drives may have been configured differently, this is the drive structure after running lsblk   
-
-# NAME                      MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
-# sda                         8:0    0 465.3G  0 disk
-# ├─sda1                      8:1    0     1M  0 part
-# ├─sda2                      8:2    0     2G  0 part /boot
-# └─sda3                      8:3    0 463.2G  0 part
-#   └─ubuntu--vg-ubuntu--lv 252:0    0   100G  0 lvm  /
-# sdb                         8:16   0   931G  0 disk
-# └─sdb1                      8:17   0   931G  0 part
-# sdc                         8:32   0 119.2G  0 disk
-# └─sdc1                      8:33   0 119.2G  0 part
-
-# Resize sda drive
-lsblk
-sudo vgs
-sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
-sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
-df -h /
-
 # Disable swappiness
 cat /proc/sys/vm/swappiness
 sudo nano /etc/sysctl.conf
@@ -28,47 +8,6 @@ ENTER
 CTRL+X
 sudo sysctl -p /etc/sysctl.conf
 cat /proc/sys/vm/swappiness  # Verify: 0
-
-# List Block Devices - Confirm the OS detects the 2nd physical/logical drive, usually sdb. The OS drive and USB Flash Drive (if still connected) will appear here as well.
-lsblk
-
-# Create an ext4 filesystem on sdb and set /dev/sdb1 as its partition
-sudo mkfs.ext4 /dev/sdb1
-
-# Create a mount point for sdb
-sudo mkdir /mnt/rippled_data
-
-# Correlate the partition to the mount point
-sudo mount /dev/sdb1 /mnt/rippled_data
-
-# Copy or take a picture of the sdb1 UUID
-sudo blkid /dev/sdb1
-
-# Edit fstab to automatically mount sdb at bootup with noatime
-sudo nano /etc/fstab
-
-# Enter the following text including the comment "# rippled_data mount configuration"
-
-# rippled_data mount configuration
-UUID=YourSdbUUID /mnt/rippled_data ext4 defaults,noatime 0 2
-
-# Save and exit
-CTRL+O
-ENTER
-CTRL+X
-
-# Reclaim the 5% ext4 disk space reserve on sdb1
-sudo tune2fs -m 0 /dev/sdb1
-
-sudo systemctl stop rippled
-
-# Create new directories
-sudo mkdir -p /mnt/rippled_data/rippled/db/nudb
-sudo mkdir -p /mnt/rippled_data/rippled/logs
-
-#  Set correct ownership and permissions
-sudo chown -R rippled:rippled /mnt/rippled_data/rippled
-sudo chmod -R 750 /mnt/rippled_data/rippled
 
 # Update rippled.cfg
 sudo nano /etc/opt/ripple/rippled.cfg
@@ -91,13 +30,6 @@ CTRL+O
 ENTER
 CTRL+X
 
-# Delete old database and log directories
-sudo rm -rf /var/lib/rippled/db
-sudo rm -rf /var/log/rippled
-
-# Start and enable rippled
-sudo systemctl start rippled
-sudo systemctl enable rippled
 
 # Verify rippled service
 rippled server_info
