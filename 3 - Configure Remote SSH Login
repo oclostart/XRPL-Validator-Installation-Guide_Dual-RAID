@@ -6,28 +6,28 @@ Search "Windows PowerShell"
 Rick click and Run as Administrator
 
 # ENTER THE FOLLOWING
-ssh-keygen -t rsa -b 4096
-ENTER (do not name the file)
+Enter ssh-keygen -t rsa -b 4096
+Press ENTER (do not name the file)
 - enter a passphrase for your key pair (Recommended if the node is meant to be in production and not used for testing)
 - confirm your passphrase
-type $env:USERPROFILE\.ssh\id_rsa.pub  
+Enter type $env:USERPROFILE\.ssh\id_rsa.pub  
 # Copy output to clipboard
 
-#  Connect to the Server from the Client (Password-Based) where x.x.x.x is the Server IP
+#  Connect to th  e Server from the Client (Password-Based) where x.x.x.x is the Server IP
 ssh username@x.x.x.x
 Type yes
 Type your server account password
 
 # On the Server (via SSH Session) 
-mkdir -p ~/.ssh
-echo "<paste-public-key-here>" >> ~/.ssh/authorized_keys  # Paste key copied above
-chmod 600 ~/.ssh/authorized_keys
-chmod 700 ~/.ssh
-exit
+Enter mkdir -p ~/.ssh
+Enter (do not remove the ""s, Paste key copied above) echo "paste-public-key-here" >> ~/.ssh/authorized_keys 
+Enter chmod 600 ~/.ssh/authorized_keys
+Enter chmod 700 ~/.ssh
+Enter exit
 
 # Reconnect the Windows client to the Server to test key-based login (no password needed)
-ssh username@x.x.x.x  
-passphrase
+Type ssh username@x.x.x.x  
+Enter your passphrase
 
 # On the Server (via New Key-Based SSH Session)
 sudo apt update
