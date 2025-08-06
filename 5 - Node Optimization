@@ -16,7 +16,6 @@ sudo nano /etc/opt/ripple/rippled.cfg
 huge
 
 # Update the following under [node_db]
-path=/mnt/rippled_data/rippled/db/nudb
 online_delete=750000
 
 # Update the following under [database_path]
